@@ -16,7 +16,15 @@ $("#search").click(function(){
     showData();
 })
 
- 
+ function showData(){
+    userName=document.getElementById("username").value;
+    console.log(userName)
+     getUser(userName).then((res)=>{
+         console.log(res);
+         document.getElementById("name").innerHTML="Name : "+res.name;
+     })
+    
+}
 }
 
 window.onload=init;
