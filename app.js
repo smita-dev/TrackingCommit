@@ -21,10 +21,9 @@ $("#search").click(function(){
     console.log(userName)
      getUser(userName).then((res)=>{
          console.log(res);
-         document.getElementById("name").innerHTML="Name : "+res.name;
+         document.getElementById("name").innerHTML="Name : "+res.data.name;
      })
-    
-}
+ }
 }
 
 window.onload=init;
