@@ -41,14 +41,34 @@ function showRepo(repo){
         console.log(res);
         document.getElementById("repo").innerHTML="Repositores :"
         res.data.forEach(element => {
-            $('#reponame').append('<li>'+element.name +'</li>');
+            // $('#reponame').append('<li>'+element.name +'</li>');
+            $('#repo').append(`<option value="${element.name}"> 
+            ${element.name}</option>`); 
         });
     })
 }
 
-
+       
+};
 const getCommit=async()=>{
-    const apiCall= await fetch("https://api.github.com/repos/smita-dev/car-becho/git/refs/heads/master")
+       
+    const apiCall= await fetch("")
+    $.ajax({
+        type:"GET",
+        dataType:"json",
+        url:"http://localhost:3000/commit",
+        // data:{
+        //     username:,
+        //     repository:
+        // },
+        success:function(data){
+            console.log(data);
+            console.log("success")
+        },
+        error:function(err){
+            console.log("error")
+        }
+    })
     data=await apiCall.json();
     return{data}
 }
