@@ -22,6 +22,8 @@ $("#search").click(function(){
      getUser(userName).then((res)=>{
          console.log(res);
          document.getElementById("name").innerHTML="Name : "+res.data.name;
+         document.getElementById("repo").innerHTML="No. of repository : "+res.data.public_repos;
+         document.getElementById("location").innerHTML="URL : "+res.data.location;
      })
  }
 }
