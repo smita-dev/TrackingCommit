@@ -23,7 +23,7 @@ $("#search").click(function(){
      getUser(userName).then((res)=>{
          console.log(res);
          document.getElementById("name").innerHTML="Name : "+res.data.name;
-         document.getElementById("repo").innerHTML="No. of repository : "+res.data.public_repos;
+         document.getElementById("repo-no").innerHTML="No. of repository : "+res.data.public_repos;
          document.getElementById("location").innerHTML="URL : "+res.data.location;
          repoUrl=res.data.repos_url;
          showRepo(repoUrl);
@@ -32,10 +32,19 @@ $("#search").click(function(){
  
  const getRepo=async(data)=>{
     const apiCall= await fetch(repoUrl)
-    let userData=await apiCall.json();
-    return{data:userData}
+    data=await apiCall.json();
+    return{data}
 }
-
+ 
+function showRepo(repo){
+    getRepo(repo).then((res)=>{
+        console.log(res);
+        document.getElementById("repo").innerHTML="Repositores :"
+        res.data.forEach(element => {
+            $('#reponame').append('<li>'+element.name +'</li>');
+        });
+    })
+}
 }
 
 window.onload=init;
