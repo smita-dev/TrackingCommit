@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/smita-dev/TrackingCommit#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "git-commit-count": "^1.1.3"
   }
 }
