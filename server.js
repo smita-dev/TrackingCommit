@@ -6,7 +6,7 @@ const bodyparser=require('body-parser');
 const cors=require('cors');
 
 //port number
-const port=3000;
+const port=8080;
 
 //cors
 app.use(cors());
@@ -15,12 +15,11 @@ app.use(cors());
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
 
-const userRoutes=require('./api/routes/user')
-const carRoutes=require('./api/routes/car')
+const gitRoutes=require('./route/git')
 
 //filter routes
-app.use('/api',userRoutes);
-app.use('/car',carRoutes);
+app.use('/',gitRoutes);
+
 
 app.listen(port,()=>{
     console.log("connected on port "+port)
