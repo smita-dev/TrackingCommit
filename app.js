@@ -30,7 +30,7 @@ $("#search").click(function(){
      })
  }
  
- const getRepo=async(data)=>{
+const getRepo=async(data)=>{
     const apiCall= await fetch(repoUrl)
     data=await apiCall.json();
     return{data}
@@ -45,6 +45,28 @@ function showRepo(repo){
         });
     })
 }
+
+
+const getCommit=async()=>{
+    const apiCall= await fetch("https://api.github.com/repos/smita-dev/car-becho/git/refs/heads/master")
+    data=await apiCall.json();
+    return{data}
+}
+function showCommit(commit){
+    getCommit().then((res)=>{
+        console.log(res);
+        // document.getElementById("repo").innerHTML="Repositores :"
+        // res.data.forEach(element => {
+        //     $('#reponame').append('<li>'+element.name +'</li>');
+        // });
+    })
+}
+// https://api.github.com/repos/smita-dev/car-becho/git/refs/heads/master
+
 }
 
 window.onload=init;
+
+// base sha=a2d28ad4be8d92d13d8cb8553465be8aeb6aa318
+
+// latest sha=5b26805b5707de6ee8b0b8535d3788356c7fa64c
