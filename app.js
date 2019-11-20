@@ -47,43 +47,53 @@ function showRepo(repo){
         });
     })
 }
-
        
 };
-const getCommit=async()=>{
+
+$("#submit-btn").click(function(){
+    console.log("sdg")
+    let e = document.getElementById("repo");
+    let reponame = e.options[e.selectedIndex].value;
+    console.log(reponame)
+    showCommit(reponame);
+})
+function showCommit(repo){
        
-    const apiCall= await fetch("")
+    // const apiCall= await fetch("")
+    console.log(userName);
+    console.log(repo)
     $.ajax({
         type:"GET",
         dataType:"json",
-        url:"http://localhost:3000/commit",
-        // data:{
-        //     username:,
-        //     repository:
-        // },
+        url:"http://localhost:8080/commit",
+        data:{
+            username:userName,
+            repository:repo
+        },
         success:function(data){
             console.log(data);
             console.log("success")
+            return data;
         },
         error:function(err){
             console.log("error")
         }
     })
-    data=await apiCall.json();
-    return{data}
+    // data=await apiCall.json();
+    
 }
-function showCommit(commit){
-    getCommit().then((res)=>{
-        console.log(res);
-        // document.getElementById("repo").innerHTML="Repositores :"
-        // res.data.forEach(element => {
-        //     $('#reponame').append('<li>'+element.name +'</li>');
-        // });
-    })
-}
+// function showCommit(repo){
+//     getCommit(repo).then((res)=>{
+//         console.log(res);
+//         // document.getElementById("repo").innerHTML="Repositores :"
+//         // res.data.forEach(element => {
+//         //     $('#reponame').append('<li>'+element.name +'</li>');
+//         // });
+//     })
+// }
 // https://api.github.com/repos/smita-dev/car-becho/git/refs/heads/master
 
-}
+
 
 window.onload=init;
 
