@@ -1,6 +1,7 @@
 let clientId= "033e09c0c3a6711439b5";
 let clientSecret="bbfbb86813046dee2f96a4ae87f1073b32ce0901"; 
-let userName
+let userName;
+let repoUrl;
 function init(){
 
 console.log("SDdf")
@@ -24,8 +25,17 @@ $("#search").click(function(){
          document.getElementById("name").innerHTML="Name : "+res.data.name;
          document.getElementById("repo").innerHTML="No. of repository : "+res.data.public_repos;
          document.getElementById("location").innerHTML="URL : "+res.data.location;
+         repoUrl=res.data.repos_url;
+         showRepo(repoUrl);
      })
  }
+ 
+ const getRepo=async(data)=>{
+    const apiCall= await fetch(repoUrl)
+    let userData=await apiCall.json();
+    return{data:userData}
+}
+
 }
 
 window.onload=init;
